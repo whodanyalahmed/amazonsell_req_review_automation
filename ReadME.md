@@ -3,7 +3,7 @@ This is the script which will go all of the orders and make them request review 
 
 To get started with this script you need to install python and then just write...
 
-> `python install -r requirements.txt`
+> python **install -r requirements.txt**
 
 It will install all the dependencies (btw which is only one...lol)
 
