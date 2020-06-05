@@ -1,6 +1,7 @@
 from selenium import webdriver
 import selenium
 import time,re,os,sys
+from sys import platform
 
 dirname = os.path.dirname(__file__)
 
@@ -8,6 +9,22 @@ ord_num_list = []
 
 #this is mktplcid inpupt which we use for link
 mktplcid = input("Enter marketplaceId: ")
+
+
+def resource_path(relative_path):
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.dirname(__file__)
+    return os.path.join(base_path, relative_path)
+
+
+if platform == "linux" or platform == "linux2":
+    # linux
+    path = resource_path('driver/chromedriver')
+else:
+    path = resource_path('driver/chromedriver.exe')
+    # Windows...
 
 
 def gath_data():
@@ -35,17 +52,9 @@ def gath_data():
             print("no more pages  - "+str(e))
             break
 
-def resource_path(relative_path):
-    try:
-        base_path = sys._MEIPASS
-    except Exception:
-        base_path = os.path.dirname(__file__)
-    return os.path.join(base_path, relative_path)
-
-
 print("\n\nProcessing.....")
 
-path = resource_path('driver/chromedriver.exe')
+# path = resource_path('driver/chromedriver.exe')
 driver =webdriver.Chrome(path)
 req=driver.get('https://sellercentral.amazon.com/home')
 
